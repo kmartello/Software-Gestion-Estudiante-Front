@@ -10,3 +10,7 @@ table {
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
   z-index: 99999 !important;
 }
+
+.button-margin {
+  margin-right: 100px; /* Ajusta el valor del margen según lo desees */
+}

@@ -91,40 +91,43 @@ export class CursoComponent implements OnInit {
     });
   }
 
-  crear() {
-    if (this.form.valid) {
-      this.cursoService.insertCurso(this.form.value).subscribe((res: any) => {
-        console.log(res);
-        this.openSnackBar("CREADO CON EXITO", 'Cerrar')
-        this.modalService.dismissAll()
-        this.loadCursos();
-      })
-    }
-  }
-
-  modificar() {
-    if (this.form.valid) {
-      this.cursoService.updateCurso(this.selectedCurso, this.form.value).subscribe((res: any) => {
-        console.log(res);
-        this.openSnackBar("Actualizado con Éxito", 'Cerrar')
-        this.modalService.dismissAll()
-        this.loadCursos();
-      })
-    }
-  }
-
-  eliminar(curso: Curso) {
-    this.cursoService.deleteCurso(curso).subscribe((res: any) => {
+crear() {
+  if (this.form.valid) {
+    this.cursoService.insertCurso(this.form.value).subscribe((res: any) => {
       console.log(res);
-      this.openSnackBar("Eliminado con Éxito", 'Cerrar')
-      this.modalService.dismissAll()
+      this.openSnackBar("CREADO CON ÉXITO");
+      this.modalService.dismissAll(); // Cerrar el modal aquí después de cargar las asignaturas
       this.loadCursos();
-    })
+    });
   }
+}
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+modificar() {
+  if (this.form.valid) {
+    this.cursoService.updateCurso(this.selectedCurso, this.form.value).subscribe((res: any) => {
+      console.log(res);
+      this.openSnackBar("ACTUALIZADO CON ÉXITO");
+      this.modalService.dismissAll(); // Cerrar el modal aquí después de cargar las asignaturas
+      this.loadCursos();
+    });
   }
+}
+
+eliminar(curso: Curso) {
+  this.cursoService.deleteCurso(curso).subscribe((res: any) => {
+    console.log(res);
+    this.openSnackBar("ELIMINADO CON ÉXITO");
+    this.modalService.dismissAll(); // Cerrar el modal aquí después de cargar las asignaturas
+    this.loadCursos();
+  });
+}
+
+openSnackBar(message: string) {
+  const snackBarRef = this._snackBar.open(message, 'Cerrar');
+  setTimeout(() => {
+    snackBarRef.dismiss();
+  }, 3000); // Cambia este valor según tus preferencias de tiempo
+}
 
   resetForm(selectedCurso: Curso | undefined = undefined) {
     if (selectedCurso == undefined) {

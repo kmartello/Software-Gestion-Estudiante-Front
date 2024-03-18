@@ -1,9 +1,11 @@
 <div class="center-content">
-  <mat-card appElevation class="inline-block pointer" (click)="goToEstudiantes()">
+  <mat-card appElevation class="inline-block pointer custom-card" (click)="goToEstudiantes()">
     <mat-card-header>
-      <mat-card-title>Estudiantes</mat-card-title>
-    </mat-card-header>
+      <mat-card-title class="custom-title">ESTUDIANTES</mat-card-title>
+    </mat-card-header> 
+    <div class="card-image-container">   
     <img class="same-size-img" mat-card-image src="./assets/Estudiantes.jpg" alt="asignaturas">
+    </div>
     <mat-card-content>
       <p>
         Modulo de Gestión de Estudiantes
@@ -11,11 +13,13 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card appElevation class="inline-block pointer" (click)="goToAsignatura()">
+  <mat-card appElevation class="inline-block pointer custom-card" (click)="goToAsignatura()">
     <mat-card-header>
-      <mat-card-title>Asignaturas</mat-card-title>
+      <mat-card-title class="custom-title">ASIGNATURAS</mat-card-title>
     </mat-card-header>
+    <div class="card-image-container">
     <img class="same-size-img" mat-card-image src="./assets/Asignatura.jpg" alt="asignaturas">
+    </div>
     <mat-card-content>
       <p>
         Modulo de Gestión de Asignaturas
@@ -23,11 +27,13 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card appElevation class="inline-block pointer" (click)="goToCursos()">
+  <mat-card appElevation class="inline-block pointer custom-card" (click)="goToCursos()">
     <mat-card-header>
-      <mat-card-title>Cursos</mat-card-title>
+      <mat-card-title class="custom-title">CURSOS</mat-card-title>
     </mat-card-header>
+    <div class="card-image-container">
     <img class="same-size-img" mat-card-image src="./assets/Curso.jpg" alt="asignaturas">
+    </div>
     <mat-card-content>
       <p>
         Modulo de Asignación de Cursos

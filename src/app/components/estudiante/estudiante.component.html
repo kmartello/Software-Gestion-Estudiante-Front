@@ -1,6 +1,6 @@
 <mat-form-field appearance="standard">
-  <mat-label>Filtro</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Escribe lo que quieras buscar :D" #input>
+  <mat-label>FILTRO</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Escribe lo que deseas buscar" #input>
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -48,17 +48,18 @@
 
 <mat-paginator [pageSize]="10" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
 
-
-<button mat-raised-button color="primary" (click)="goHome()">
-  <mat-icon>arrow_back</mat-icon>Volver
-</button>
-<button mat-raised-button color="primary" (click)="open(content,'Nuevo')">
-  <mat-icon>add</mat-icon>Agregar
-</button>
+<div style="margin: 20px;">
+  <button mat-raised-button color="primary" class="button-margin" (click)="goHome()" style="margin-left: 20px;">
+    <mat-icon>arrow_back</mat-icon>Volver
+  </button>
+  <button mat-raised-button color="primary" class="button-margin" (click)="open(content,'Nuevo')" style="margin-left: 20px;">
+    <mat-icon>add</mat-icon>Agregar
+  </button>
+</div>
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h2 class="modal-title" id="modal-basic-title">{{accion}} Empleado</h2>
+    <h2 class="modal-title" id="modal-basic-title">{{accion}} Estudiante</h2>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">

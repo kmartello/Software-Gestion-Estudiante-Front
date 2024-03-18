@@ -1,0 +1,61 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.mat-card {
+  width: 50px; /* Ancho de las tarjetas */
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.same-size-img {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.center-content .inline-block {
+    margin-right: 5px;
+}
+  
+.bold-title {
+    font-weight: bold;
+}
+.center-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px; /* Añadir un espacio alrededor del contenedor */
+}
+  
+.custom-card {
+    width: 50%; /* Ancho fijo para cada tarjeta */
+}
+  
+.custom-title {
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centrar el texto */
+}
+
+.mat-card-content p {
+    text-align: center; /* Centra el texto dentro de las etiquetas <p> */
+}
+
+.full-width-img {
+    width: 100%;
+}
+  
+.card-image-container {
+    width: 100%;
+    overflow: hidden;
+}
+    
+  

@@ -9,6 +9,7 @@ import { Profesor } from 'src/app/interface/profesor';
 import { AsignaturaService } from 'src/app/service/asignatura.service';
 import { ProfesorService } from 'src/app/service/profesor.service';
 
+
 @Component({
   selector: 'app-asignatura',
   templateUrl: './asignatura.component.html',
@@ -88,39 +89,42 @@ export class AsignaturaComponent implements OnInit {
   }
 
   crear() {
-    if (this.form.valid) {
-      this.asignaturaService.insertAsignatura(this.form.value).subscribe((res: any) => {
-        console.log(res);
-        this.openSnackBar("CREADO CON EXITO", 'Cerrar')
-        this.modalService.dismissAll()
-        this.loadAsignaturas();
-      })
-    }
-  }
-
-  modificar() {
-    if (this.form.valid) {
-      this.asignaturaService.updateAsignatura(this.selectedAsignatura, this.form.value).subscribe((res: any) => {
-        console.log(res);
-        this.openSnackBar("Actualizado con Éxito", 'Cerrar')
-        this.modalService.dismissAll()
-        this.loadAsignaturas();
-      })
-    }
-  }
-
-  eliminar(asignatura: Asignatura) {
-    this.asignaturaService.deleteAsignatura(asignatura).subscribe((res: any) => {
+  if (this.form.valid) {
+    this.asignaturaService.insertAsignatura(this.form.value).subscribe((res: any) => {
       console.log(res);
-      this.openSnackBar("Eliminado con Éxito", 'Cerrar')
-      this.modalService.dismissAll()
+      this.openAndCloseSnackBar("CREADO CON ÉXITO");
+      this.modalService.dismissAll(); // Cerrar el modal aquí después de cargar las asignaturas
+      this.loadAsignaturas();
+    });
+  }
+}
+
+modificar() {
+  if (this.form.valid) {
+    this.asignaturaService.updateAsignatura(this.selectedAsignatura, this.form.value).subscribe((res: any) => {
+      console.log(res);
+      this.openAndCloseSnackBar("ACTUALIZADO CON ÉXITO");
+      this.modalService.dismissAll();
       this.loadAsignaturas();
     })
   }
+}
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
+eliminar(asignatura: Asignatura) {
+  this.asignaturaService.deleteAsignatura(asignatura).subscribe((res: any) => {
+    console.log(res);
+    this.openAndCloseSnackBar("ELIMINADO CON ÉXITO");
+    this.modalService.dismissAll();
+    this.loadAsignaturas();
+  })
+}
+
+openAndCloseSnackBar(message: string) {
+  const snackBarRef = this._snackBar.open(message, 'Cerrar');
+  setTimeout(() => {
+    snackBarRef.dismiss();
+  }, 3000); // 3000 milisegundos (3 segundos), puedes ajustar este valor según tu preferencia
+}
 
   resetForm(selectedAsignatura: Asignatura | undefined = undefined) {
     if (selectedAsignatura == undefined) {

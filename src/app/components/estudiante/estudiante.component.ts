@@ -83,36 +83,40 @@ export class EstudianteComponent implements OnInit {
     if (this.form.valid) {
       this.estudianteService.insertEstudiante(this.form.value).subscribe((res: any) => {
         console.log(res);
-        this.openSnackBar("CREADO CON EXITO", 'Cerrar')
-        this.modalService.dismissAll()
+        this.showAndCloseSnackBar("CREADO CON ÉXITO");
+        this.modalService.dismissAll(); // Cerrar el modal aquí después de cargar las asignaturas
         this.loadEstudiantes();
-      })
+      });
     }
   }
-
+  
   modificar() {
     if (this.form.valid) {
       this.estudianteService.updateEstudiante(this.selectedEstudiante, this.form.value).subscribe((res: any) => {
         console.log(res);
-        this.openSnackBar("Actualizado con Éxito", 'Cerrar')
-        this.modalService.dismissAll()
+        this.showAndCloseSnackBar("ACTUALIZADO CON ÉXITO");
+        this.modalService.dismissAll(); // Cerrar el modal aquí después de cargar las asignaturas
         this.loadEstudiantes();
-      })
+      });
     }
   }
-
+  
   eliminar(estudiante: Estudiante) {
     this.estudianteService.deleteEstudiante(estudiante).subscribe((res: any) => {
       console.log(res);
-      this.openSnackBar("Eliminado con Éxito", 'Cerrar')
-      this.modalService.dismissAll()
+      this.showAndCloseSnackBar("ELIMINADO CON ÉXITO");
+      this.modalService.dismissAll(); // Cerrar el modal aquí después de cargar las asignaturas
       this.loadEstudiantes();
-    })
+    });
   }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  
+  showAndCloseSnackBar(message: string) {
+    const snackBarRef = this._snackBar.open(message, 'Cerrar');
+    setTimeout(() => {
+      snackBarRef.dismiss();
+    }, 3000); // Cambiar 3000 a la cantidad de milisegundos que desees que el mensaje permanezca abierto
   }
+  
 
   resetForm(selectedEstudiante: Estudiante | undefined = undefined) {
     if (selectedEstudiante == undefined) {
